@@ -6,7 +6,7 @@ const parseStringAsArray = require('../utils/parseStringAsArray')
 module.exports = {
     async index(req, res){
         const devs = await Dev.find({})
-        return res.json({devs})
+        return res.json(devs)
     },
 
     async store (req, res) {
@@ -19,7 +19,7 @@ module.exports = {
             
             const {name = login, avatar_url, bio } = response.data
         
-            const techsArray = parseStringAsArray(techs)
+            let techsArray = parseStringAsArray(techs)
         
             const location = {
                 type: 'Point',

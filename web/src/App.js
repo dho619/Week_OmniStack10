@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     async function loadDevs() {
       const response = await api.get('/devs')
-      setDevs(response.data.devs)
+      setDevs(response.data)
     }
 
     loadDevs()

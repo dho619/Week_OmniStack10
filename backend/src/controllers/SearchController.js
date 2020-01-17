@@ -6,10 +6,10 @@ module.exports = {
         const { latitude, longitude, techs} = req.query
         
         const techsArray = parseStringAsArray(techs)
-
+        
         const devs = await Dev.find({
             techs: {
-                $in: techsArray,
+                $in: [RegExp("^" + techsArray + "$", 'i')],
             },
             location: {
                 $near: {
@@ -22,6 +22,6 @@ module.exports = {
             }
         })
 
-        return res.json({devs})
+        return res.json(devs)
     }
 }
